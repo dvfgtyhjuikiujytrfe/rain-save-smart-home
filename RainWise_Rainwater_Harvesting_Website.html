@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RainWise | Rainwater Harvesting Planner</title>
+<style>
+:root{--deep:#123b3a;--green:#177b68;--mint:#dff4e9;--sky:#dff2fb;--gold:#f3c56a;--ink:#183331;--muted:#55716d;--paper:#f7fbf7;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+header{background:linear-gradient(120deg,rgba(12,53,54,.96),rgba(23,123,104,.88)),linear-gradient(45deg,#dff4e9,#dff2fb);color:white;padding:22px max(5vw,20px) 70px;position:relative;overflow:hidden}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1150px;margin:auto}.brand{font-size:1.35rem;font-weight:800;letter-spacing:.3px}.brand span{color:var(--gold)}nav a{color:white;text-decoration:none;margin-left:16px;font-size:.94rem}
+.hero{max-width:1150px;margin:58px auto 0;display:grid;grid-template-columns:1.25fr .75fr;gap:35px;align-items:center}.eyebrow{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:.78rem}.hero h1{font-size:clamp(2.2rem,5vw,4.3rem);line-height:1.05;margin:12px 0 18px}.hero p{font-size:1.12rem;max-width:650px;color:#e4f5ee}.btn{display:inline-block;background:var(--gold);color:var(--deep);padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.house-art{min-height:235px;position:relative;border-radius:24px;background:linear-gradient(#b9e7f5 0 60%,#9fd4ae 60%);overflow:hidden;box-shadow:0 20px 40px #062c2b44}.sun{position:absolute;right:30px;top:24px;width:48px;height:48px;border-radius:50%;background:#ffe29b}.house{position:absolute;bottom:27px;left:23%;width:180px;height:115px;background:#fff2d8;border-radius:4px}.roof{position:absolute;left:-18px;top:-58px;width:216px;height:90px;background:#b85e46;clip-path:polygon(50% 0,100% 100%,0 100%)}.door{position:absolute;bottom:0;left:72px;width:38px;height:67px;background:#177b68}.window{position:absolute;bottom:48px;left:20px;width:32px;height:28px;background:#9edcf0;border:4px solid white}.window.two{left:126px}.tank{position:absolute;right:28px;bottom:27px;width:70px;height:88px;background:#eaf8ff;border:5px solid #177b68;border-radius:12px 12px 7px 7px}.tank:before{content:"RAIN";font-size:10px;font-weight:bold;color:#177b68;position:absolute;top:30px;left:14px}.pipe{position:absolute;left:calc(23% + 150px);bottom:104px;width:50px;height:65px;border-right:7px solid #eaf8ff;border-bottom:7px solid #eaf8ff;border-radius:0 0 12px 0}.drop{position:absolute;top:28px;left:40px;color:white;font-size:1.7rem;opacity:.85}
+main{max-width:1150px;margin:auto;padding:0 20px 60px}.section{padding-top:52px}.section h2{font-size:clamp(1.7rem,3vw,2.45rem);margin:0 0 10px;color:var(--deep)}.lead{color:var(--muted);max-width:800px;margin-top:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid #dcebe3;border-radius:18px;padding:22px;box-shadow:0 8px 24px #174a3810}.icon{font-size:1.8rem}.card h3{margin:8px 0;color:var(--deep)}.calculator{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:20px}.panel{background:white;border:1px solid #dcebe3;border-radius:20px;padding:24px;box-shadow:0 8px 24px #174a3810}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px}.field input,.field select{width:100%;padding:12px;border:1px solid #b9d5ca;border-radius:10px;font:inherit;background:#fbfefb;color:var(--ink)}.hint{font-size:.8rem;color:var(--muted);margin:5px 0 0}.result{background:linear-gradient(135deg,#e5f7ed,#e4f4fb);border-radius:16px;padding:20px;margin-bottom:14px}.result small{color:var(--muted);font-weight:700}.big{font-size:2rem;font-weight:800;color:var(--green);line-height:1.25}.result p{margin:4px 0 0}.bar-wrap{height:14px;background:#d7e8df;border-radius:20px;overflow:hidden;margin:12px 0}.bar{height:100%;background:linear-gradient(90deg,#177b68,#71c9a2);width:0%;transition:width .3s}.note{background:#fff6df;border-left:5px solid var(--gold);padding:14px 16px;border-radius:8px;color:#5d4a22;margin-top:16px}.steps{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:white;border-radius:16px;padding:18px;border:1px solid #dcebe3}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;background:var(--green);color:white;width:34px;height:34px;border-radius:50%;font-weight:800}.step h3{margin:12px 0 6px}.uses{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.use{padding:18px;border-radius:15px;background:white;border:1px solid #dcebe3}.use strong{color:var(--green)}.resource a{color:var(--green);font-weight:700;overflow-wrap:anywhere}.footer{background:var(--deep);color:#e4f5ee;padding:30px 20px;text-align:center}.footer small{color:#b7d8cc}.muted{color:var(--muted)}
+@media(max-width:800px){.hero,.calculator{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.house-art{min-height:220px}.uses{grid-template-columns:1fr}nav a{margin:0 10px 0 0}.form-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps,.form-grid{grid-template-columns:1fr}.hero{margin-top:35px}}
+</style>
+</head>
+<body>
+<header>
+<nav><div class="brand">💧 Rain<span>Wise</span></div><div><a href="#why">Why harvest?</a><a href="#calculator">Calculator</a><a href="#storage">Storage & uses</a><a href="#resources">Resources</a></div></nav>
+<div class="hero">
+<div><div class="eyebrow">A practical water-saving guide</div><h1>Make every drop count.</h1><p>Plan a rooftop rainwater harvesting system for your home. Estimate how much rain you can collect, choose a sensible storage approach, and learn what the water can safely be used for.</p><a class="btn" href="#calculator">Calculate my rainwater ↓</a></div>
+<div class="house-art" aria-label="Illustration of a house collecting rainwater"><div class="sun"></div><div class="drop">💧　💧</div><div class="house"><div class="roof"></div><div class="door"></div><div class="window"></div><div class="window two"></div></div><div class="pipe"></div><div class="tank"></div></div>
+</div></header>
+<main>
+<section class="section" id="why"><h2>Why harvest rainwater?</h2><p class="lead">Rain that runs off a roof can be collected instead of being wasted. A well-planned system can reduce pressure on mains water and help communities prepare for dry periods.</p>
+<div class="grid">
+<div class="card"><div class="icon">🏠</div><h3>Useful at home</h3><p>Collect rain from a clean roof and store it for suitable household uses.</p></div>
+<div class="card"><div class="icon">🌱</div><h3>Save resources</h3><p>Reduce demand for treated drinking water for tasks that do not need drinking-quality water.</p></div>
+<div class="card"><div class="icon">🌧️</div><h3>Manage runoff</h3><p>With correct overflow planning, harvesting can reduce some roof runoff and support groundwater recharge where suitable.</p></div>
+</div></section>
+<section class="section" id="calculator"><h2>Rainwater calculator</h2><p class="lead">Enter your roof area, local rainfall and roof type. The estimate is a planning guide—not a guarantee of how much water your tank will receive.</p>
+<div class="calculator">
+<div class="panel"><h3>1. Your home details</h3><div class="form-grid">
+<div class="field"><label for="area">Roof area (m²)</label><input id="area" type="number" min="1" value="100"><p class="hint">Length × width of roof footprint.</p></div>
+<div class="field"><label for="rain">Rainfall (mm)</label><input id="rain" type="number" min="0" value="800"><p class="hint">Use a monthly or seasonal total.</p></div>
+<div class="field"><label for="roof">Roof surface</label><select id="roof"><option value=".8">Typical roof (0.80)</option><option value=".9">Metal sheet (0.90)</option><option value=".75">Tile (0.75)</option><option value=".7">Concrete (0.70)</option><option value=".65">Other / conservative (0.65)</option></select><p class="hint">Coefficient allows for collection losses.</p></div>
+<div class="field"><label for="tank">Tank size (litres)</label><input id="tank" type="number" min="0" value="2000"><p class="hint">Your proposed storage capacity.</p></div>
+<div class="field"><label for="people">People in household</label><input id="people" type="number" min="1" value="4"></div>
+<div class="field"><label for="daily">Daily non-drinking use (L/person)</label><input id="daily" type="number" min="0" value="25"><p class="hint">For example, gardening or cleaning.</p></div>
+</div></div>
+<div class="panel"><h3>2. Your estimate</h3><div class="result"><small>Potential collected water</small><div class="big" id="harvest">—</div><p id="formula">Calculation shown here</p></div>
+<div class="result"><small>Approximate tank refills at this rainfall total</small><div class="big" id="fills">—</div><p>Actual refills depend on the timing of rain, demand and overflow.</p></div>
+<div class="result"><small>Household non-drinking demand per day</small><div class="big" id="demand">—</div><p id="days">—</p></div>
+<div><strong>Tank size compared with estimated harvest</strong><div class="bar-wrap"><div class="bar" id="bar"></div></div><p class="hint" id="tanknote"></p></div>
+<button class="btn" onclick="window.print()">Print / Save calculation</button></div>
+</div>
+<div class="note"><strong>Formula:</strong> Harvestable water (litres) ≈ rainfall (mm) × roof area (m²) × runoff coefficient. One millimetre of rain on one square metre equals about one litre before collection losses. Enter rainfall for the period you want to estimate, not automatically the annual value.</div>
+</section>
+<section class="section" id="storage"><h2>How to collect and store water</h2><p class="lead">A simple system has five parts. The exact design and tank size should suit local rainfall, roof area, demand, space and building rules.</p>
+<div class="steps">
+<div class="step"><h3>Catch</h3><p>Keep the roof and gutters clear of leaves, litter and animal waste.</p></div>
+<div class="step"><h3>Divert & filter</h3><p>Use a leaf screen and first-flush diverter to keep the first dirty runoff out of the tank.</p></div>
+<div class="step"><h3>Store safely</h3><p>Use a covered, opaque tank with a secure lid, screened inlet and overflow outlet.</p></div>
+<div class="step"><h3>Maintain</h3><p>Inspect before rainy seasons, clean gutters and filters, and remove sediment from the tank as needed.</p></div>
+</div>
+<h2 style="margin-top:34px">What can harvested rainwater be used for?</h2>
+<div class="uses">
+<div class="use">🌿 <strong>Gardening and watering plants</strong><br><span class="muted">Often a good use for appropriately collected water.</span></div>
+<div class="use">🧹 <strong>Outdoor cleaning and washing floors</strong><br><span class="muted">Use a clean collection system and avoid contact with contaminated water.</span></div>
+<div class="use">🚽 <strong>Toilet flushing</strong><br><span class="muted">Requires suitable plumbing, backflow prevention and local code compliance.</span></div>
+<div class="use">🧺 <strong>Laundry or other household uses</strong><br><span class="muted">Only if water quality and system design are suitable for that use.</span></div>
+<div class="use">🌍 <strong>Groundwater recharge</strong><br><span class="muted">A recharge pit or trench may be suitable after professional site assessment; do not direct contaminated runoff underground.</span></div>
+<div class="use">🥤 <strong>Drinking and cooking</strong><br><span class="muted">Do not drink untreated rainwater. Proper treatment, disinfection and regular testing are essential.</span></div>
+</div>
+<div class="note"><strong>Safety first:</strong> Rainwater can contain germs and chemicals from roofs, gutters, air pollution or storage. Keep tanks sealed against insects, separate harvested-water pipes from drinking-water plumbing, and follow local public-health guidance. Never enter a tank.</div>
+</section>
+<section class="section" id="resources"><h2>Learn more from trusted sources</h2><p class="lead">Use official guidance for technical design, groundwater recharge and local requirements.</p>
+<div class="grid">
+<div class="card resource"><h3>Central Ground Water Board (CGWB)</h3><p>Rainwater harvesting FAQs and technical guidance.</p><a href="https://cgwb.gov.in/en/faq-general" target="_blank" rel="noopener">Visit CGWB ↗</a></div>
+<div class="card resource"><h3>Jal Shakti Abhiyan: Catch the Rain</h3><p>Government resources and knowledge materials on water conservation.</p><a href="https://jsactr.mowr.gov.in/Public_Dash/KnowledgeCentre.aspx" target="_blank" rel="noopener">Visit Catch the Rain ↗</a></div>
+<div class="card resource"><h3>India Meteorological Department</h3><p>Rainfall statistics to help you find a suitable local rainfall figure.</p><a href="https://mausam.imd.gov.in/imd_latest/contents/rainfall_statistics_3.php" target="_blank" rel="noopener">View rainfall statistics ↗</a></div>
+</div>
+</section>
+<section class="section"><h2>Remember</h2><p class="lead">Start with a realistic estimate, store water safely, match uses to water quality, and maintain the system every season. For structural design, groundwater recharge or drinking-water use, consult a qualified local professional.</p></section>
+</main>
+<footer class="footer"><strong>RainWise — Plan. Collect. Conserve.</strong><br><small>Free educational website prototype • Calculations are estimates and do not replace site-specific engineering advice.</small></footer>
+<script>
+const $ = id => document.getElementById(id);
+function fmt(n){return new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(Math.max(0,n))+' L';}
+function calc(){
+ const area=Math.max(0,Number($('area').value)||0), rain=Math.max(0,Number($('rain').value)||0);
+ const coef=Math.max(0,Number($('roof').value)||0), tank=Math.max(0,Number($('tank').value)||0);
+ const people=Math.max(0,Number($('people').value)||0), daily=Math.max(0,Number($('daily').value)||0);
+ const harvest=area*rain*coef, demand=people*daily, days=demand>0?tank/demand:0;
+ $('harvest').textContent=fmt(harvest);
+ $('formula').textContent=`${rain} mm × ${area} m² × ${coef.toFixed(2)} = ${fmt(harvest)} (estimated)`;
+ $('fills').textContent=tank>0?(harvest/tank).toFixed(1)+'×':'Set a tank size';
+ $('demand').textContent=fmt(demand)+'/day';
+ $('days').textContent=demand>0?`A full ${fmt(tank)} tank could cover about ${days.toFixed(1)} days of the stated non-drinking demand, before losses.`:'Enter a daily use above zero to estimate coverage.';
+ const pct=harvest>0?Math.min(100,tank/harvest*100):0;
+ $('bar').style.width=pct+'%';
+ $('tanknote').textContent=harvest===0?'Enter positive rainfall and roof area to estimate the harvest.':`Tank capacity is ${pct.toFixed(1)}% of the estimated harvest for this rainfall period. A tank may overflow if it is full when rain arrives.`;
+}
+['area','rain','roof','tank','people','daily'].forEach(id=>$(id).addEventListener('input',calc));
+calc();
+</script>
+</body></html>
